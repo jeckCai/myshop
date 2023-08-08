@@ -1,0 +1,90 @@
+<template>
+  <div class="Top">
+    <el-menu
+      :default-active="activeIndex2"
+      class="el-menu-demo"
+      mode="horizontal"
+      @select="handleSelect"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+    >
+      <el-menu-item><a href="/">首页</a> </el-menu-item>
+      <el-menu-item><a href="/u/shoppinglist" target="_blank">商品信息</a></el-menu-item>
+      <el-menu-item><a href="/user/activity" target="_blank">活动公告</a></el-menu-item>
+      <el-menu-item><a href="/user/blog" target="_blank">论坛信息</a></el-menu-item>
+      <el-menu-item index="/user/info"><a href="/user/info" target="_blank">我的</a></el-menu-item>
+      <el-menu-item><a href="/user/shop" target="_blank">订单记录</a></el-menu-item>
+      <el-menu-item><a href="/shopcar/list" target="_blank">购物车</a></el-menu-item>
+      <el-menu-item index="4"><a href="/user/chat" target="_blank">客服</a></el-menu-item>
+    </el-menu>
+  </div>
+</template>
+
+<script>
+import { synRequestPost } from '@/static/request';
+export default {
+  name: 'Top',
+  data() {
+    return {
+      activeIndex: '1',
+      activeIndex2: '1',
+      username: '',
+      password: '',
+      menu: [
+        {
+          href: '',
+          name: '首页',
+        },
+        {
+          href: 'shoppinglist',
+          name: '商品信息',
+        },
+        {
+          href: '',
+          name: '活动公告',
+        },
+        {
+          href: '',
+          name: '论坛信息',
+        },
+        {
+          href: '',
+          name: '我的',
+        },
+        {
+          href: '',
+          name: '订单记录',
+        },
+        {
+          href: '',
+          name: '购物车',
+        },
+        {
+          href: '',
+          name: '客服',
+        },
+      ],
+    };
+  },
+
+  mounted() {
+    this.check();
+  },
+
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    //确认是否为管理员
+    async check() {
+      var obj = await synRequestPost('/admin/login?username=' + this.username + '&password=' + this.password);
+      console.log(obj[0]);
+      if (obj.length == 0) {
+        
+      } else {
+      }
+    },
+  },
+};
+</script>
