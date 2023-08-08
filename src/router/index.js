@@ -6,6 +6,7 @@ import demoRouters from './modules/roters';
 Vue.use(VueRouter);
 
 const routes = [...demoRouters];
+console.log(routes)
 
 const router = new VueRouter({
   mode: 'hash',

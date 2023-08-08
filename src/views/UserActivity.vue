@@ -22,8 +22,8 @@
   </template>
   
   <script>
-  import Top from '../view/user/frame/Top.vue'
-  import {synRequestPost} from "../../../static/request"
+  import Top from '@/views/user/frame/Top.vue'
+  import {synRequestPost} from "@/static/request"
   export default {
     name: 'HelloWorld',
     components:{Top},
@@ -56,7 +56,7 @@
   
    
 
-<style>
+<style scoped>
 .el-carousel__item h3 {
   color: #475669;
   font-size: 18px;
@@ -74,5 +74,5 @@
 }
 </style>
 <style scoped>
-@import '../../../static/bootcss/css/bootstrap.min.css'
+@import '@/static/bootcss/css/bootstrap.min.css'
 </style>

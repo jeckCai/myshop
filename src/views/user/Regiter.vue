@@ -27,7 +27,7 @@
   </template>
   
   <script>
-  import {synRequestPost} from "../../../../static/request"
+  import {synRequestPost} from "@/static/request"
   export default {
     name: "Login",
     data() {

@@ -61,5 +61,5 @@
 }
 </style>
 <style scoped>
-@import '../../../static/bootcss/css/bootstrap.min.css'
+@import '@/static/bootcss/css/bootstrap.min.css'
 </style>

@@ -43,9 +43,9 @@
   </template>
     
   <script>
-      import Top from '../frame/Top.vue';
-      import Left from '../frame/Left.vue'
-      import {synRequestPost} from "../../../../static/request"
+      import Top from '@/frame/Top.vue';
+      import Left from '@/frame/Left.vue'
+      import {synRequestPost} from "@/static/request"
       export default {
         name: 'AdminIndex',
         components: {Top,Left},

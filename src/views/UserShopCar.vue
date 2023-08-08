@@ -50,8 +50,8 @@
   </template>
   
   <script>
-  import Top from '../view/user/frame/Top.vue'
-  import {synRequestPost} from "../../../static/request"
+  import Top from '@/views/user/frame/Top.vue'
+  import {synRequestPost} from "@/static/request"
   export default {
     name: 'HelloWorld',
     components:{Top},
@@ -114,5 +114,5 @@
 }
 </style>
 <style scoped>
-@import '../../../static/bootcss/css/bootstrap.min.css'
+@import '@/static/bootcss/css/bootstrap.min.css'
 </style>

@@ -9,14 +9,9 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item><a href="/">首页</a> </el-menu-item>
-      <el-menu-item><a href="/u/shoppinglist" target="_blank">商品信息</a></el-menu-item>
-      <el-menu-item><a href="/user/activity" target="_blank">活动公告</a></el-menu-item>
-      <el-menu-item><a href="/user/blog" target="_blank">论坛信息</a></el-menu-item>
-      <el-menu-item index="/user/info"><a href="/user/info" target="_blank">我的</a></el-menu-item>
-      <el-menu-item><a href="/user/shop" target="_blank">订单记录</a></el-menu-item>
-      <el-menu-item><a href="/shopcar/list" target="_blank">购物车</a></el-menu-item>
-      <el-menu-item index="4"><a href="/user/chat" target="_blank">客服</a></el-menu-item>
+      <el-menu-item :index="item.index" :route="{ path: item.href }" v-for="item in menu" :key="item.index"
+        ><span>{{ item.name }}</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -27,42 +22,49 @@ export default {
   name: 'Top',
   data() {
     return {
-      activeIndex: '1',
       activeIndex2: '1',
       username: '',
       password: '',
       menu: [
         {
           href: '',
+          index:'1',
           name: '首页',
         },
         {
-          href: 'shoppinglist',
+          href: '/u/shoppinglist',
           name: '商品信息',
+          index:'2',
         },
         {
-          href: '',
+          href: '/user/activity',
           name: '活动公告',
+          index:'3',
         },
         {
-          href: '',
+          href: '/user/blog',
           name: '论坛信息',
+          index:'4',
         },
         {
-          href: '',
+          href: '/user/info',
           name: '我的',
+          index:'5',
         },
         {
-          href: '',
+          href: '/user/shop',
           name: '订单记录',
+          index:'6',
         },
         {
-          href: '',
+          href: '/shopcar/list',
           name: '购物车',
+          index:'7',
         },
         {
-          href: '',
+          href: '/user/chat',
           name: '客服',
+          index:'8',
         },
       ],
     };
@@ -73,15 +75,18 @@ export default {
   },
 
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    handleSelect(key) {
+      const r = this.menu[key].href;
+      if (r) {
+        this.$router.push({ path: r });
+      }
+      console.log(key);
     },
     //确认是否为管理员
     async check() {
       var obj = await synRequestPost('/admin/login?username=' + this.username + '&password=' + this.password);
       console.log(obj[0]);
       if (obj.length == 0) {
-        
       } else {
       }
     },
